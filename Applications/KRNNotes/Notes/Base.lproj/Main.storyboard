@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="PMw-CU-AFR">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
+    </dependencies>
+    <scenes>
+        <!--Add Note View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AddNoteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R6P-22-dgD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <fontDescription key="fontDescription" name="Baskerville-SemiBold" family="Baskerville" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SuC-oy-MTG">
+                        <barButtonItem key="leftBarButtonItem" title=" Назад" id="yCc-hf-Hdo">
+                            <connections>
+                                <segue destination="QVh-SM-Bb7" kind="unwind" unwindAction="unwindBackToTableVC:" id="Qku-tw-jsu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Добавить заметку" id="YrF-ZR-mTB">
+                            <connections>
+                                <action selector="AddNoteAction:" destination="BYZ-38-t0r" id="gGA-yI-aAh"/>
+                                <segue destination="QVh-SM-Bb7" kind="unwind" unwindAction="unwindToTableVC:" id="Lc1-a5-mIM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="noteField" destination="R6P-22-dgD" id="sMc-HK-qW6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="QVh-SM-Bb7" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1535" y="-185"/>
+        </scene>
+        <!--Show Full Note View Controller-->
+        <scene sceneID="jHj-7Z-GKF">
+            <objects>
+                <viewController id="xdW-ce-EnP" customClass="ShowFullNoteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4RZ-Pm-k6V"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gk5-26-IpV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wu9-Rg-i6e">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Отображаемый текст заметки" translatesAutoresizingMaskIntoConstraints="NO" id="vBS-ka-unb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="H73-6C-ZGH"/>
+                    <connections>
+                        <outlet property="fullNoteTextField" destination="vBS-ka-unb" id="ZyQ-go-t9V"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="faf-2D-gt0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1360" y="512"/>
+        </scene>
+        <!--Мои заметки-->
+        <scene sceneID="fau-NK-bjO">
+            <objects>
+                <tableViewController storyboardIdentifier="MainTableVC" id="Sao-Hf-QEs" customClass="KRNTableViewControllerMS" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yjY-86-aQa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CellAddNote" id="SJk-Ef-RLN">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SJk-Ef-RLN" id="vob-uu-sxk">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miU-QL-ree">
+                                            <rect key="frame" x="243" y="7" width="69" height="30"/>
+                                            <state key="normal" title="Добавить"/>
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="push" id="6zL-XN-E50"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellShowNote" rowHeight="71" id="53W-fp-RqE" customClass="KRNShowNoteCell">
+                                <rect key="frame" x="0.0" y="130" width="320" height="71"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="53W-fp-RqE" id="W8T-fa-k3W">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6JC-LS-AFn">
+                                            <rect key="frame" x="17" y="0.0" width="270" height="56"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3w-mR-NOx">
+                                            <rect key="frame" x="287" y="10" width="33" height="35"/>
+                                            <state key="normal" title="Button" image="trash_for_notes.jpg"/>
+                                            <connections>
+                                                <action selector="trashButton:" destination="53W-fp-RqE" eventType="touchUpInside" id="657-cx-DuQ"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="noteLabel" destination="6JC-LS-AFn" id="dMW-QN-OFB"/>
+                                    <segue destination="xdW-ce-EnP" kind="push" identifier="sequeToFullNote" id="Oot-Y4-LCo"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Sao-Hf-QEs" id="e2N-wh-cKS"/>
+                            <outlet property="delegate" destination="Sao-Hf-QEs" id="Gwm-Gl-eDG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Мои заметки" id="p9f-2C-dSh"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SNb-3z-Bjl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="747" y="54"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fcb-4e-djQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PMw-CU-AFR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ici-Yg-qEP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Sao-Hf-QEs" kind="relationship" relationship="rootViewController" id="Soi-NS-Wnp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q3g-mV-yv7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="283" y="54"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="trash_for_notes.jpg" width="168" height="168"/>
+    </resources>
+</document>
