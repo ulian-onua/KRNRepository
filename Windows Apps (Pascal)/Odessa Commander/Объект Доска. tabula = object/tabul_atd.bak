@@ -1,0 +1,509 @@
+unit tabul_atd;
+
+
+
+
+
+interface
+       uses crt;
+
+        type tabula_coord = record  {координаты доски}
+         MinX, MinY, MaxX, MaxY : byte
+         end;
+
+        type Coords = record       {координаты - используются для всего остального}
+            LeftX, LeftY, RightX, RightY : byte
+        end;
+
+        type tabula_Colors = record  {цвета}
+        Ramka_color, Up_menu_color, Down_menu_color, Right_Column_color,
+                                               Left_Column_color,
+                                               Console_color,
+                                               Delimeters_color: byte
+        end;
+
+        type ramka_type = record     {тип линий рамки - любого окна}
+             Left_up_corner, Right_up_corner,
+             Left_down_corner, Right_down_corner,
+             Down_Line, Forward_line : char;
+        end;
+
+        type Main_tabula = record {основной модуль}
+         Tabula_pos : tabula_coord; {координаты доски}
+         Up_menu_pos,  {координаты верхнего меню}
+         Down_Menu_pos,   {координаты нижнего меню}
+         Left_Column_pos,  {координаты левого столбца}
+         Right_Column_pos, {координаты правого столбца}
+         Console_pos : Coords;   {координаты консоли}
+         ramka_lines : ramka_type;   {тип линий рамки}
+         Colors : tabula_colors  {цвета}
+         end;
+
+       type main_lines_type = record  {типы линий различных меню}
+           Menu_Up_lines,
+           Menu_Down_lines,
+           Left_Column_lines,
+           Right_Column_lines,
+           Console_lines       : ramka_type;
+           Right_Delimiter_line,
+           Left_Delimiter_line : char;
+       end;
+
+       type tabula = object
+       public
+        constructor init (_step : integer; r_color : integer); {инициализация}
+        procedure draw_ramka;   {рисуем рамку}
+        procedure draw_Up_Menu;  {рисуем верхнее меню}
+        procedure Draw_Down_Menu; {рисуем нижнее меню}
+        procedure Draw_Left_Column; {рисуем левый столбец}
+        procedure Draw_Right_Column; {рисуем правый столбец}
+        procedure Draw_Console;      {рисуем командную строку}
+        procedure Draw_Visual_Part;  {рисует все}
+        function Get_ramka_coordinates : Tabula_Coord; {получить координаты рамки}
+        function Get_Up_menu_coordinates : Coords;   {получить координаты верхнего меню}
+        function Get_Down_menu_coordinates : Coords; {получить координаты нижнего меню}
+        function Get_Left_Column_Coordinates : Coords; {получить координаты левого столбца}
+        function Get_Right_Column_Coordinates : Coords; {получить координаты правого столбца}
+        function Get_Console_Coordinates : Coords; {получить координаты командной строки}
+        procedure Set_ramka_coordinates (coordinates : Tabula_Coord); {установить координаты рамки}
+        procedure Set_Up_menu_coordinates (coordinates : Coords); {установить координаты верхнего меню}
+        procedure Set_Down_menu_coordinates (coordinates : Coords); {установить координаты нижнего меню}
+        procedure Set_Left_Column_Coordinates (coordinates : Coords); {установить координаты левого столбца}
+        procedure Set_Right_Column_Coordinates (coordinates : Coords); {установить координаты консоли}
+        procedure Set_Console_Coordinates (coordinates : Coords); {установить координаты консоли}
+        procedure Get_Cursor_Position_Coordinates (Coordinates : Coords; var first, second : Coords);{получить координаты начала и конца столбца}
+        function Get_Colors : Tabula_Colors;  {получить цвета }
+        procedure Set_Colors (enter_colors : Tabula_colors); {установить цвета}
+        procedure Set_Ramka_color (enter_color : byte);  {установить цвет рамки}
+        procedure Set_Up_Menu_color (enter_color : byte); {установить цвет верхнего меню}
+        procedure Set_Down_Menu_color (enter_color : byte); {установить цвет нижнего меню}
+        procedure Set_Left_Column_color (enter_color : byte); {установить цвеи левой колонки}
+        procedure Set_Right_Column_color (enter_color : byte); {установить цвет правой колонки}
+        procedure Set_Delimeters_color (enter_color : byte); {установить цвет разделителей}
+
+
+       private
+          main : main_tabula;
+          lines_type : main_lines_type;
+          step, length_delimeters : byte; {шаг рисования меню}
+
+          procedure GetMaxXY;  {определить в зависимости от граф режима - макс положение}
+          procedure Draw_Rectangle (Left_X, Left_Y, Right_X,
+            Right_Y: byte; sym : ramka_type);  {нарисовать окно с рамкой}
+          procedure Draw_Down_Line  (Left_X, Left_Y,      {нарисовать}
+                                     Right_Y : byte; sym : char); {линию вниз}
+          procedure Draw_Delimiters (Left_X, Left_Y,       {нарисовать }
+                                    Right_X, Right_Y, length : byte; sym : char); {разделители}
+
+       end;
+
+
+implementation
+
+        procedure tabula.GetMaxXY;
+        begin
+
+        with main do begin
+            with tabula_Pos do begin
+               MaxX := 80;
+               MaxY := 25;
+            end
+        end
+        end;
+
+        procedure tabula.Draw_Rectangle (Left_X, Left_Y, Right_X, Right_Y : byte; sym : ramka_type);
+        var i : byte;
+        begin
+
+
+          GotoXY (Left_X, Left_Y);           {рисуем}
+          Write (Sym.Left_Up_Corner);   {левый верхний угол}
+
+          GotoXY (Right_X, Left_Y);         {рисуем}
+          Write (Sym.Right_Up_Corner); {правый верхний угол}
+
+          GotoXY  (Left_X, Right_Y);          {рисуем}
+          Write (Sym.Left_Down_Corner);  {левый нижний угол}
+
+          GotoXY (Right_X, Right_Y);         {рисуем}
+          Write (Sym.Right_Down_Corner); {правый нижний угол}
+
+          GotoXY (Left_X + 1, Left_Y);             {рисуем}
+          for i := Left_X + 1 to Right_X - 1 do   {верхнюю}
+               Write (Sym.Forward_line);           {линию}
+
+          GotoXY (Left_X + 1, Right_Y);            {рисуем}
+          for i := Left_X + 1 to Right_X - 1 do    {нижнюю}
+                Write (Sym.Forward_Line);           {линию}
+
+          for i := Left_Y + 1 to Right_Y - 1 do begin {рисуем}
+                GotoXY (Left_X, i);                   {левую}
+                Write (Sym.Down_line)                 {линию}
+          end;
+
+           for i := Left_Y + 1 to Right_Y - 1 do begin {рисуем}
+                GotoXY (Right_X, i);                   {правую}
+                Write (Sym.Down_line)                  {линию}
+          end
+       end;
+
+
+       procedure tabula.Draw_Down_Line (Left_X, Left_Y, Right_Y : byte;
+                                                                sym : char);
+               var i : byte;
+          begin
+
+                for i := Left_Y to Right_Y do begin
+                gotoxy (Left_X, i);
+                Write (sym)
+                end
+          end;
+
+
+
+        procedure tabula.draw_delimiters (Left_X, Left_Y,
+                                    Right_X, Right_Y, length : byte;
+                                        sym : char);
+        begin
+             textcolor (main.colors.delimeters_color);
+             Self.Draw_Down_Line (Left_X + length, Left_Y + 1, Right_Y - 1, sym);
+             Self.Draw_Down_Line (Left_X + 2 * length, Left_Y + 1, Right_Y - 1, #186)
+
+        end;
+
+        constructor tabula.init (_step : integer; r_color : integer);
+        begin
+            step := _step;
+
+        with main do begin
+            with tabula_Pos do begin {устанавливаем координаты доски}
+               MinX := 1;
+               MinY := 1;
+               GetMaxXY
+            end;
+
+             with Ramka_lines do begin {устанавливаем символы рамки}
+             Left_up_corner := #218;
+             Right_up_corner := #191;
+             Left_Down_corner := #192;
+             Right_Down_corner := #217;
+             Down_line := #179;
+             Forward_line := #196
+           {    Left_up_corner := #201;
+             Right_up_corner := #187;
+             Left_Down_corner := #200;
+             Right_Down_corner := #188;
+             Down_line := #186;
+             Forward_line := #205 }
+             end;
+
+            begin          {устанавливаем координаты верхнего меню}
+            Up_menu_pos.LeftX := Tabula_Pos.MinX;
+            Up_menu_pos.LeftY := Tabula_Pos.MinY;
+            Up_menu_pos.RightX := Tabula_Pos.MaxX;
+            Up_menu_pos.Righty := Tabula_Pos.MinY + step;
+            end;
+
+            begin         {устанавливаем координаты нижнего меню}
+            Down_menu_pos.LeftX := Tabula_Pos.MinX;
+            Down_menu_pos.LeftY := Tabula_Pos.MaxY - step;
+            Down_menu_pos.RightX := Tabula_Pos.MaxX;
+            Down_menu_pos.RightY := Tabula_Pos.MaxY
+            end;
+
+            begin           {устанавливаем координаты левой колонки}
+            Left_Column_Pos.LeftX := Tabula_Pos.MinX + (step * 2);
+            Left_Column_Pos.LeftY := Tabula_Pos.MinY + (step * 2);
+            Left_Column_Pos.RightX := Tabula_Pos.MaXX div 2 - step;
+            Left_Column_Pos.RightY := Tabula_Pos.MaxY - step * 3
+             end;
+
+              begin           {устанавливаем координаты правой колонки}
+            Right_Column_Pos.LeftX := Tabula_Pos.MaXX div 2 + step ;
+            Right_Column_Pos.LeftY := Tabula_Pos.MinY + (step * 2);
+            Right_Column_Pos.RightX := Tabula_Pos.MaXX - (step * 2);
+            Right_Column_Pos.RightY := Tabula_Pos.MaxY - step * 3
+             end;
+
+              begin           {устанавливаем координаты командной строки}
+            Console_Pos.LeftX := Tabula_Pos.MinX + step;
+            Console_Pos.LeftY := Tabula_Pos.MaxY - (step * 2);
+            Console_Pos.RightX := Tabula_Pos.MaxX;
+            Console_Pos.RightY := Tabula_Pos.MaxY - step
+             end;
+
+        with colors do begin
+
+        ramka_color := r_color;     {цвет рамки}
+        Up_Menu_color := blue; {цвет верхнего меню}
+        Down_Menu_color := blue;  {цвет нижнего меню}
+        Left_Column_color := green;
+        Right_Column_color := green;
+        Console_color := lightgray;
+        Delimeters_color := 2
+        end
+        end;
+
+        length_delimeters := 13 {длина разделителей окна - 13}
+        end;
+
+       procedure tabula.draw_ramka;  {нарисовать рамку}
+       var i : byte;
+       begin
+
+           textcolor (main.colors.ramka_color);
+           HighVideo;
+
+            with main do
+            Draw_Rectangle (Tabula_Pos.MinX, Tabula_Pos.MinX,
+                        Tabula_Pos.MaxX, Tabula_Pos.MaxY, ramka_lines)
+
+  end;
+
+  procedure tabula.Draw_Up_Menu;
+  begin
+         textcolor (main.colors.Up_Menu_color);{цвет символов}
+         highvideo; {в режиме повышенной яркости}
+
+    Lines_type.Menu_Up_lines := Main.Ramka_lines; {тип линий - такой же, как у рамки}
+
+       Draw_Rectangle (Main.UP_Menu_pos.LeftX, Main.Up_Menu_pos.LeftY,
+                       Main.Up_Menu_pos.RightX, Main.Up_Menu_pos.RightY,
+                       Lines_type.Menu_Up_lines) {рисуем}
+
+  end;
+
+   procedure tabula.Draw_Down_Menu;
+  begin
+
+
+         textcolor (main.colors.Down_Menu_color);{цвет символов}
+         highvideo;  {в режиме повышенной яркости}
+
+           Lines_type.Menu_Down_lines := Main.Ramka_lines;{тип линий - такой же, как у рамки}
+
+       Draw_Rectangle (Main.Down_Menu_pos.LeftX, Main.Down_Menu_pos.LeftY,
+                       Main.Down_Menu_pos.RightX, Main.Down_Menu_pos.RightY,
+                       Lines_type.Menu_Down_lines) {рисуем}
+
+  end;
+
+
+  procedure Tabula.Draw_Left_Column;
+
+  begin
+       textcolor (main.colors.Left_Column_color); {цвет символов}
+       highvideo;  {в режиме повышенной яркости}
+
+            with lines_type.Left_column_lines do begin {обозначения символов}
+             Left_up_corner := #213;
+             Right_up_corner := #184;
+             Left_Down_corner := #212;
+             Right_Down_corner := #190;
+             Down_line := #179;
+             Forward_line := #205
+            end;
+
+
+           Lines_type.Left_Delimiter_line := #179;
+
+            Draw_Rectangle (Main.Left_Column_pos.LeftX, Main.Left_COlumn_pos.LeftY,
+                       Main.Left_Column_pos.RightX, Main.Left_Column_pos.RightY,
+                       Lines_type.Left_Column_lines); {рисуем}
+
+            Draw_delimiters (Main.Left_Column_pos.LeftX, Main.Left_COlumn_pos.LeftY,
+                       Main.Left_Column_pos.RightX, Main.Left_Column_pos.RightY, length_delimeters,
+                       Lines_type.Left_Delimiter_line)
+
+            end;
+
+   procedure Tabula.Draw_Right_Column;
+
+  begin
+       textcolor (main.colors.Right_Column_color); {цвет символов}
+       highvideo;  {в режиме повышенной яркости}
+
+            with lines_type.Right_column_lines do begin {обозначения символов}
+             Left_up_corner := #213;
+             Right_up_corner := #184;
+             Left_Down_corner := #212;
+             Right_Down_corner := #190;
+             Down_line := #179;
+             Forward_line := #205
+            end;
+
+            Lines_Type.Right_Delimiter_Line := #179;
+
+            Draw_Rectangle (Main.Right_Column_pos.LeftX, Main.RIght_COlumn_pos.LeftY,
+                       Main.Right_Column_pos.RightX, Main.Right_Column_pos.RightY,
+                       Lines_type.Right_Column_lines); {рисуем}
+
+             Draw_delimiters (Main.Right_Column_pos.LeftX, Main.Right_COlumn_pos.LeftY,
+                       Main.Right_Column_pos.RightX, Main.Right_Column_pos.RightY, length_delimeters,
+                       Lines_type.Right_Delimiter_line)
+
+            end;
+
+
+
+   procedure Tabula.Draw_Console;
+
+  begin
+       textcolor (main.colors.Console_color); {цвет символов}
+       Lowvideo;  {в режиме повышенной яркости}
+
+              {обозначения символов}
+            Lines_type.Console_lines := Main.Ramka_lines;
+
+            textbackground (black);
+
+            Window (Main.Console_pos.LeftX, Main.Console_pos.LeftY,
+                       Main.Console_pos.RightX, Main.Console_pos.RightY);
+
+
+            gotoxy (Main.Console_pos.LeftX, Main.Console_pos.RightY);
+            Write ('C:\')
+
+
+
+       end;
+
+  procedure Tabula.Draw_Visual_Part;
+  begin
+        clrscr;
+        Draw_ramka;   {рисуем рамку}
+        Draw_Up_Menu;  {рисуем верхнее меню}
+        Draw_Down_Menu; {рисуем нижнее меню}
+        Draw_Left_Column; {рисуем левый столбец}
+        Draw_Right_Column; {рисуем правый столбец}
+        Draw_Console   {консоль}
+  end;
+
+     function Tabula.Get_ramka_coordinates : Tabula_coord;
+      begin
+             Get_Ramka_coordinates := main.tabula_pos
+      end;
+
+     function Tabula.Get_Up_menu_coordinates : Coords;
+     begin
+                Get_Up_Menu_coordinates := Main.Up_Menu_pos
+     end;
+
+     function Tabula.Get_Down_menu_coordinates : Coords;
+       begin
+                Get_Down_menu_coordinates := Main.Down_menu_pos
+       end;
+
+     function Tabula.Get_Left_Column_Coordinates : Coords;
+        begin
+               Get_Left_Column_coordinates := Main.Left_column_pos
+        end;
+
+     function Tabula.Get_Right_Column_Coordinates : Coords;
+        begin
+                Get_Right_Column_Coordinates := Main.Right_COlumn_Pos
+        end;
+
+     function Tabula.Get_Console_Coordinates : Coords;
+       begin
+             Get_Console_Coordinates := Main.Console_pos
+       end;
+
+
+       procedure Tabula.Set_ramka_coordinates (coordinates : Tabula_coord);
+       begin
+                 Main.Tabula_Pos := Coordinates
+       end;
+
+        procedure Tabula.Set_Up_menu_coordinates (coordinates : Coords);
+        begin
+                   Main.Up_Menu_pos := Coordinates
+        end;
+
+        procedure Tabula.Set_Down_menu_coordinates (coordinates : Coords);
+        begin
+                   Main.Down_menu_pos := Coordinates
+        end;
+
+        procedure Tabula.Set_Left_Column_Coordinates (coordinates : Coords);
+        begin
+                  Main.Left_column_pos := Coordinates
+        end;
+
+        procedure  Tabula.Set_Right_Column_Coordinates (coordinates : Coords);
+        begin
+                   Main.Right_column_pos := Coordinates
+        end;
+
+        procedure Tabula.Set_Console_Coordinates (coordinates : Coords);
+         begin
+                  Main.Console_Pos := Coordinates
+         end;
+
+       procedure Tabula.Get_Cursor_Position_Coordinates (Coordinates : Coords; var first, second : Coords);
+       begin
+                       {первый столбец}
+            First.LeftX := Coordinates.LeftX + 1;
+            First.LeftY := Coordinates.LeftY + 1;
+            First.RightX := Coordinates.LeftX + 1;
+            First.RightY := Coordinates. RightY - 1;
+                       {второй столбец}
+            Second.LeftX :=  Coordinates.LeftX + length_delimeters + 1;
+            Second.LeftY := Coordinates.LeftY + 1;
+            Second.RightX := Coordinates.LeftX + length_delimeters + 1;
+            Second.RightY := Coordinates. RightY - 1
+       end;
+
+        function Tabula.Get_Colors : Tabula_Colors;
+        begin
+                Get_Colors := Main.Colors
+        end;
+
+        procedure Tabula.Set_Colors (enter_colors : Tabula_Colors);
+        begin
+                 Main.Colors := enter_colors
+        end;
+
+        procedure Tabula.Set_Ramka_color (enter_color : byte);
+        begin
+                 Main.Colors.Ramka_color := enter_color
+        end;
+
+        procedure Tabula.Set_Up_Menu_color (enter_color : byte);
+        begin
+                 Main.Colors.Up_menu_color := enter_color
+        end;
+
+         procedure Tabula.Set_Down_Menu_color (enter_color : byte);
+        begin
+                  Main.Colors.Down_menu_color := enter_color
+        end;
+
+         procedure Tabula.Set_Right_Column_color (enter_color : byte);
+        begin
+                 Main.Colors.Right_Column_color := enter_color
+        end;
+
+          procedure Tabula.Set_Left_Column_color (enter_color : byte);
+        begin
+                 Main.Colors.Left_Column_color := enter_color
+        end;
+
+          procedure Tabula.Set_Delimeters_color (enter_color : byte);
+        begin
+                 Main.Colors.Right_Column_color := enter_color
+        end;
+
+
+end.
+
+
+
+
+
+
+
+
+
+
+

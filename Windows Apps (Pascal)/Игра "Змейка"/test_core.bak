@@ -1,0 +1,44 @@
+program test_core;
+
+uses core, crt;
+
+var field : field_obj;
+var zmeika : zmeika_obj;
+    apple : apple_obj;
+var i : byte;
+var driver : driver_obj;
+var exit_game : boolean;
+begin
+ (*     Clrscr;
+      field.init (10, 4, 40, 20);
+      field.draw;
+     // readkey;
+     // field.delete;
+     // readkey  // Тестирование объекта field;
+      zmeika.Init(20, 10, 6);
+      zmeika.Draw;
+     // readkey;
+
+      readkey;
+    zmeika.SetWay(down);
+    zmeika.Move;
+
+      readkey;
+
+      zmeika.Add;
+      for i := 1 to 8 do
+      begin
+
+      zmeika.Move;
+      readkey;
+      end;
+      readkey;
+      apple.init (20, 8);
+      apple.draw;
+      readkey; *)
+      repeat
+     // driver.init;
+      driver.game;
+      driver.done (exit_game);
+      until not exit_game;
+end.

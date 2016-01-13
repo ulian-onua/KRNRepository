@@ -1,0 +1,28 @@
+   uses core, crt;
+
+   var x : Stick;
+
+      key : char;
+
+
+
+
+   procedure test_program;
+   var Driver : Driver_Obj;
+   Again : boolean;
+   begin
+        repeat
+        Driver.Init;
+        Driver.MovingFigures;
+        Driver.GameOver (Again)
+        until not Again;
+
+
+   end;
+
+    begin
+
+     test_program;
+
+
+   end.

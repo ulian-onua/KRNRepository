@@ -1,0 +1,33 @@
+unit DOSWIN;
+
+interface
+
+        type  doswinconverter = object
+        public
+        procedure decode_char (var ch : char);
+        procedure decode_string (var s : string);
+        end;
+
+
+implementation
+
+        procedure doswinconverter.decode_char (var ch : char);
+        begin
+          if ord (ch) in [192..239] then
+                ch := chr (ord (ch) - 64)
+          else if ord (ch) in [240..255] then
+                ch := chr (ord (ch) - 16)
+          else if ord (ch) = 189 then
+                ch := chr (ord (241))
+          else if ord (ch) = 168 then
+                ch := chr (ord (240))
+        end;
+
+        procedure doswinconverter.decode_string (var s : string);
+         var i : byte;
+         begin
+              for i := 1 to Length (s) do
+               decode_char (s[i];
+         end;
+
+end.

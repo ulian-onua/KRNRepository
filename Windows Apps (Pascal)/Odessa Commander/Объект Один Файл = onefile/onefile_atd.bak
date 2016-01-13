@@ -1,0 +1,148 @@
+unit onefile_atd;
+
+interface
+
+uses Dos;
+
+     type types_of_file = (executable, down_dir, up_dir, textfile, archive, other);
+
+
+ type onefile = object
+
+     public
+     constructor init (get_name : namestr);   {инициализация}
+     function GetFileName : NameStr;  {получить имя файла}
+     procedure SetExtension; {выбить расширение}
+     procedure SetFiletype;    {установить тип файла}
+     procedure SetFileColor;   {установить цвет файла}
+     procedure SetFileSize (Size : Comp); {установить размер файла}
+     procedure SetFileTime (Time : longint); {установить время файла}
+     procedure SetCoordinates (x, y : byte); {установить координаты}
+     function  GetCoordinates : byte;  {получить координаты}
+     procedure SetFileInformation;
+     function GetFileColor : byte;
+     procedure GetFromSearch (S: SearchRec);
+     destructor destroy;             {уничтожить}
+
+
+     private
+        Filename : string[12];     {полное имя файла}
+        Extension : ExtStr;     {расширение}
+        Filetype : types_of_file; {тип файла}
+        FileColor  : byte;    {цвет}
+        Start_CoordX, Start_CoordY : byte;  {начальные координаты}
+        FileSize : Comp;        {размер файла}
+        FileTime : longint;    {время создания или обновления файла}
+     end;
+
+
+implementation
+
+        constructor onefile.init (get_name : namestr);
+        begin
+             Filename := Get_name
+        end;
+
+        function onefile.GetFileName : NameStr;
+        begin
+                GetFileName := Filename
+        end;
+
+        procedure onefile.SetExtension;
+        var x : byte;
+        begin
+              x := pos ('.', Filename); {ищем точку}
+
+              if x = 0 then          {если не нашли, то}
+                Extension := ''   {расширения нет}
+              else if x = 1 then    {если 1, то это над-директория}
+                Extension := '.'
+              else
+                 Extension := Copy (Filename, x + 1, Length(Filename) - x); {иначе, копируем}
+        end;
+
+        procedure onefile.SetFileType;
+        begin
+
+               if  (Extension = 'com') or (Extension = 'exe') or (Extension = 'bat') then
+                   FileType := executable
+              else if Extension = '' then
+                   FileTYpe := down_dir
+              else if Extension = '.' then
+                   FileType := up_dir
+              else if Extension = 'txt' then
+                   FileType := textfile
+              else if (Extension = 'rar') or (Extension = 'zip') then
+                   FileType := archive
+              else
+                   FileType := other
+        end;
+
+        procedure onefile.SetFileColor;
+          begin
+                if FileType = down_dir then  {если директория, то цвет - желтый}
+                     FileColor := 14
+                else                       {иначе - белый}
+                     Filecolor := 15
+          end;
+
+
+        procedure onefile.SetFileSize (Size : comp);
+           begin
+                  FileSize := Size
+           end;
+
+        procedure onefile.SetFileTime (Time : LongInt);
+           begin
+                   FileTime := Time
+           end;
+
+        procedure onefile.SetFileInformation;
+           begin
+                  SetExtension;
+                  SetFileType;
+                  SetFileColor
+           end;
+
+            procedure onefile.SetCoordinates (x, y : byte);
+            begin
+                   Start_CoordX := x;
+                   Start_CoordY := y;
+            end;
+
+            function onefile.GetCoordinates : byte;
+            begin
+                     GetCoordinates := Start_CoordX
+
+            end;
+
+             function onefile.GetFileColor : byte;
+             begin
+                    GetFileColor := FileColor
+             end;
+
+            procedure onefile.GetFromSearch (S: SearchRec);
+             begin
+                  Filename := Copy (S.Name, 1, 8);
+                  Filename := Filename + '.';
+                  Filename := Filename + Copy (S.Name, Length (s.name) - 3, 3);
+
+                  FileSize := S.Size;
+                  FileTime := S.Time
+             end;
+
+
+            destructor onefile.destroy;
+            begin
+            end;
+
+
+end.
+
+
+
+
+
+
+
+

@@ -1,0 +1,300 @@
+unit mass_field_atd;
+
+
+interface
+        uses crt;
+
+        const MaxX = 80;
+        const MaxY = 25;
+
+
+        type charmx = array [1..MaxY, 1..MaxX] of char;  {¬ âà¨æ  á¨¬¢®«®¢}
+        type colormx = array [1..MaxY, 1..MaxX] of byte; {¬ âà¨æ  â¨¯  ¡ ©â}
+             charmx_pointer = ^charmx;   {ãª § â¥«ì ­  áharmx}
+             colormx_pointer = ^colormx;   {ãª § â¥«ì ­  colormx}
+
+        type Figure_position = record
+                 x1, y1, x2, y2, color, backcolor : byte;
+                 sym : char
+        end;
+
+        mass_field = object
+        public
+
+        procedure init;  {¨­¨æ¨ «¨§ æ¨ï - á®§¤ ¥âáï ­®¢®¥ ¯®«¥}
+        procedure get_from_file;  {¢§ïâì ¨§ ä ©« }
+        procedure copy_to_file; {áª®¯¨à®¢ âì ¢ ä ©«}
+        procedure addrectangle (position : Figure_position);
+                                                        {§ à¨á®¢ âì ¯àï¬®ã£®«ì­ãî ç áâì ¬ áá¨¢ }
+        procedure DrawForwardLine (position : Figure_position); {­ à¨á®¢ âì «¨­¨î ¢¯¥à¥¤}
+        procedure DrawDownLine (position : Figure_position);  {­ à¨á®¢ âì «¨­¨î ¢­¨§}
+        procedure DrawPoint (X, Y, color, backcolor : byte; sym : char); {­ à¨á®¢ âì ®¤¨­ á¨¬¢®« ¢ ãª § ­­®¬ ¬¥áâ¥}
+        procedure displaymass; {®â®¡à §¨âì ¢¥áì ¬ áá¨¢}
+        procedure add_rectangleline (position : Figure_position); {à¨áã¥¬ «¨­¨î ¯àï¬®ã£®«ì­¨ª }
+        procedure add_String (S : String; X, Y, color, backcolor : byte);  {¤®¡ ¢¨âì áâà®ªã}
+        procedure DisplayLine (Y : byte); {®â®¡à §¨âì áâà®ªã, Y - ­®¬¥à áâà®ª¨}
+        procedure DisplayScreen; {¢ë¢¥áâ¨ ¢¥áì ¬ áá¨¢ ­  íªà ­}
+        procedure Display_partline (Y, X1, X2 : byte); {®â®¡à §¨âì áâà®ªã, Y - ­®¬¥à áâà®ª¨, X1 - ­ ç «®, X2 - ª®­¥æ}
+        procedure DisplayRectangle (X1, X2, Y1, Y2 : byte); {¢ë¢¥áâ¨ ¯àï¬®ã£®«ì­ãî ç áâì íªà ­ }
+
+
+        private
+             char_mass : charmx_pointer;      {¬ âà¨æ  á¨¬¢®«®¢}
+             text_mass : colormx_pointer; {¬ âà¨æ  æ¢¥â }
+             back_mass : colormx_pointer; {¬ âà¨æ  ä®­ }
+
+        end;
+
+
+
+        implementation
+
+
+        procedure mass_field.init;    {¨­¨æ¨ «¨§ æ¨ï}
+         var i, i2 : byte;
+
+       begin
+              Getmem (char_mass, MaxX * MaxY);  {®á¢®¡ ¦¤ ¥¬ ¯ ¬ïâì ¤«ï ¬ âà¨æë á¨¬¢®«®¢}
+              Getmem (text_mass, MaxX * MaxY);  {®á¢®¡®¦¤ ¥¬ ¯ ¬ïâì ¤«ï ¬ âà¨æë æ¢¥â }
+              Getmem (back_mass, MaxX * MaxY);  {®á¢®¡®¦¤ ¥¬ ¯ ¬ïâì ¤«ï ¬ âà¨æë ä®­ }
+
+              for i := 1 to MaxY do               {ãáâ ­ ¢«¨¢ ¥¬ ­ ç «ì­ë¥ §­ ç¥­¨ï ¤«ï ¬ áá¨¢®¢}
+              for i2 := 1 to MaxX do begin
+                Char_mass^ [i, i2] := '*';  {¯à®¡¥«}
+                Text_mass^ [i, i2] := 1;   {ç¥à­ë© æ¢¥â}
+                Back_mass^ [i, i2] := 0;   {ç¥à­ë© æ¢¥â}
+              end
+        end;
+
+
+        procedure mass_field.get_from_file;  {¢§ïâì ¨§ ä ©« }
+
+         var char_file : file of charmx;   {ä ©« á¨¬¢®«®¢}
+             text_file : file of colormx;   {ä ©« æ¢¥â }
+             back_file : file of colormx;   {ä ©« ä®­ }
+
+        begin
+                Assign (char_file, 'cf.mf');    {cf - char file, mf - mass field}
+                Assign (text_file, 'tf.mf');    {tf - text file}
+                Assign (back_file, 'bf.mf');    {bf - back file}
+
+                Reset (char_file);     {®âªàë¢ ¥¬}
+                Reset (text_file);      {âà¨}
+                Reset (back_file);      {ä ©« }
+
+                Read (char_file, char_mass^);    {áç¨âë¢ ¥¬ }
+                Read (text_file, text_mass^);    {¬ áá¨¢ë}
+                Read (back_file, back_mass^);
+
+                Close (char_file);       {§ ªàë¢ ¥¬}
+                Close (text_file);       {ä ©«ë}
+                Close (back_file);
+           end;
+
+        procedure mass_field.copy_to_file;
+
+         var char_file : file of charmx;   {ä ©« á¨¬¢®«®¢}
+             text_file : file of colormx;   {ä ©« æ¢¥â }
+             back_file : file of colormx;   {ä ©« ä®­ }
+        begin
+                Assign (char_file, 'cf.mf');    {cf - char file, mf - mass field}
+                Assign (text_file, 'tf.mf');    {tf - text file}
+                Assign (back_file, 'bf.mf');    {bf - back file}
+
+                Rewrite (char_file);     {®âªàë¢ ¥¬}
+                Rewrite (text_file);      {âà¨}
+                Rewrite (back_file);      {ä ©« }
+
+                Write (char_file, char_mass^);    {§ ¯¨áë¢ ¥¬ }
+                Write (text_file, text_mass^);    {¬ áá¨¢ë}
+                Write (back_file, back_mass^);
+
+                Close (char_file);       {§ ªàë¢ ¥¬}
+                Close (text_file);       {ä ©«ë}
+                Close (back_file);
+          end;
+
+
+        procedure mass_field.displaymass;
+           var i, i2 : byte;
+           begin
+                window (1, 1, MaxX, MaxY);
+                clrscr;
+
+                for i := 1 to MaxY do begin
+                Gotoxy (1, i);  {¯¥à¥å®¤¨¬ ª å = 1 ¨ ª ãáâ ­®¢«¥­­®¬ã y}
+                for i2 := 1 to MaxX do begin
+                 textbackground (Back_mass^[i, i2]);
+                 textcolor (Text_mass^[i, i2]);
+                 Write (Char_mass^[i, i2]);
+                 end
+               end;
+
+
+        end;
+
+        procedure mass_field.addrectangle (Position : Figure_position); {§ à¨á®¢ âì ¯àï¬®ã£®«ì­ãî ç áâì}
+             var i, i2 : byte;
+
+             begin
+                   for i := Position.y1 to Position.y2 do
+                        for i2:= Position.x1 to Position.x2 do begin
+                        Char_Mass^ [i, i2] := Position.sym;
+                        Text_Mass^ [i, i2] := Position.color;
+                        Back_Mass^ [i, i2] := Position.backcolor;
+                        end
+             end;
+
+         procedure mass_field.DrawForwardLine (position : Figure_position); {à¨áã¥¬ «¨­¨î ¢¯¥à¥¤}
+             var i : byte;
+         begin
+                for i := position.x1 to position.x2 do begin
+                    with position do begin
+                        Char_Mass^ [Y1, i] := sym;
+                        Text_Mass^ [Y1, i] := color;
+                        Back_Mass^ [Y1, i] := backcolor
+                    end
+                end
+         end;
+
+          procedure mass_field.DrawDownLine (position : Figure_position); {à¨áã¥¬ «¨­¨î ¢­¨§}
+             var i : byte;
+          begin
+                for i := position.y1 to position.y2 do begin
+                    with position do begin
+                          Char_Mass^ [i, X1] := sym;
+                          Text_Mass^ [i, X1] := color;
+                          Back_Mass^ [i, X1] := backcolor
+                    end
+                end
+          end;
+
+          procedure mass_field.DrawPoint (X, Y, color, backcolor : byte; sym : char); {à¨áã¥¬ á¨¬¢®«}
+                begin
+                      Char_mass^ [Y, X] := sym;
+                      Text_Mass^ [Y, X] := color;
+                      Back_Mass^ [Y, X] := backcolor
+                end;
+
+         procedure mass_field.add_rectangleline (position : Figure_position); {®¡à¨á®¢ë¢ ¥¬ ¯àï¬®ã£®«ì­¨ª}
+           var Temp : Figure_position;
+         begin
+
+
+            Temp := position;
+
+                        with position do begin     {à¨áã¥¬ ã£«ë}
+               Self.DrawPoint (Y1, X1, color, backcolor, #213);
+               Self.DrawPoint (Y1, X2, color, backcolor, #184);
+               Self.DrawPoint (Y2, X1, color, backcolor, #212);
+               Self.DrawPoint (Y2, X2, color, backcolor, #190);
+                        end;
+
+             inc (Temp.X1);
+             dec (Temp.X2);
+             Temp.sym := #205;
+             Self.DrawForwardLine (Temp);   {à¨áã¥¬ ¢¥àå­îî «¨­¨î}
+
+             Temp.Y1 := Temp.Y2;
+             Self.DrawForwardLine (Temp);   {à¨áã¥¬ ­¨¦­îî «¨­¨î}
+
+             Temp.X1 := Position.X1;
+             Self.DrawDownLine (position);   {à¨áã¥¬ «¥¢ãî «¨­¨î ¢­¨§}
+
+             Temp.X2 := Temp.X1;
+             Self.DrawDownLine (position);   {à¨áã¥¬ ¯à ¢ãî «¨­¨î ¢­¨§}
+
+        end;
+
+            procedure mass_field.add_String (S : String; X, Y, color, backcolor : byte);
+                 var i2 : byte;
+            begin
+
+
+                  for i2 := 1 to Length (S) do begin
+                          Char_Mass^ [Y, X] := S [i2];
+                          Text_Mass^ [Y, X] := color;
+                          Back_Mass^ [Y, X] := backcolor;
+
+                     inc (X);
+                     if X > 25 then
+                     break;
+
+                  end
+            end;
+
+            procedure mass_field.DisplayLine (Y : byte);
+            var i : byte;
+            begin
+               if Y in [1..25] then begin
+                 Gotoxy (1, Y);
+                for i := 1 to MaxX do begin
+                    textcolor (Text_Mass^ [Y, i]);
+                    textbackground (Back_Mass^ [Y, i]);
+                    Write (Char_Mass^ [Y, i])
+                end
+               end
+            end;
+
+
+            procedure mass_field.DisplayScreen;
+            var Y : byte;
+            begin
+                 for Y := 1 to MaxY do
+                 Self.DisplayLine (Y);
+            end;
+
+
+           procedure mass_field.Display_partline (Y, X1, X2 : byte);
+           var i : byte;
+           begin
+                GotoXY (Y, X1);
+
+                for i := X1 to X2 do begin
+                    textcolor (Text_Mass^ [Y, i]);
+                    textbackground (Back_Mass^ [Y, i]);
+                    Write (Char_Mass^ [Y, i])
+                end;
+           end;
+
+            procedure mass_field.DisplayRectangle (X1, X2, Y1, Y2 : byte);
+            var i : byte;
+            begin
+
+                 Gotoxy (Y1, X1);
+
+                 repeat
+
+                        for i := X1 to X2 do begin
+                    textcolor (Text_Mass^ [Y1, i]);
+                    textbackground (Back_Mass^ [Y1, i]);
+                    Write (Char_Mass^ [Y1, i])
+                        end;
+                       inc (Y1);
+
+                 until Y1 > Y2
+            end;
+
+        end.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

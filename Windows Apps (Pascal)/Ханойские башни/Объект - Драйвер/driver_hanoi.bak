@@ -1,0 +1,158 @@
+unit driver_hanoi;
+
+interface
+
+uses block_atd, spice_atd, crt;
+
+
+type spices = (First, Last, Aux);   {тип спицы - первая, конечная, промежуточная}
+type spices_array = array [spices] of spice; {массив спиц}
+
+type driver = object
+     public
+     procedure init; {инициализация}
+     procedure EnterNumOfBlocks; {вводим кол-во блоков}
+
+     procedure DrawSpices;   {вырисовываем спицы}
+     procedure AddandDrawBlocks; {добавить и нарисовать блоки}
+     procedure DoIt;  {переместить блоки}
+     private
+     spica : spices_array;  {массив из трех спиц}
+     NumOfBlocks : byte;  {кол-во спиц}
+     MaxOfBlocks : byte;  {макс. кол-во блоков}
+     a, b, c : spices;
+
+     end;
+
+
+implementation
+
+
+
+      procedure driver.init;    {инициализация}
+
+       begin
+            spica[First].init (4, 20, 15, 23); {инициализация первой спицы}
+            spica[Aux].init (4, 40, 15, 23); {инициализация промежуточной спицы}
+            spica[Last].init (4, 60, 15, 23); {инициализация конечной спицы}
+
+            NumOfBlocks := 0; {кол-во блоков = 0 }
+            MaxofBlocks := 7;  {максимальное кол-во блоков = 7}
+       end;
+
+       procedure driver.EnterNumOfBlocks;  {вводим кол-во блоков}
+       const head = 'Кол-во блоков: ';
+       var tempch : char;
+       begin
+                                 {рисуем заголовок}
+            Gotoxy (55, 1);
+            TextColor (Green);
+            TextBackGround (red);
+            Write (head);
+            Gotoxy (58, 2);
+            TextBackground (black);
+            textcolor (blue);
+
+            Write ('(1 - 7)');
+
+            TextColor (White);
+
+            repeat
+                Gotoxy (55 + Length (head), 1);
+               tempch := readkey;  {считываем символ}
+
+                 if tempch = #27    {если это esc, то выходим}
+                        then halt
+                 else if tempch in ['1'..'7'] then begin  {если символ от 1 до 7}
+                        Write (tempch);  {пишем этот символ}
+                        Numofblocks := ord (tempch) - 48; {присваиваем кол-ву блоков}
+                  end;
+
+            until  (tempch = #13) and (numofblocks <> 0 ); {пока не будет нажать ентер и кол-во блоков не будет больше 1}
+        end;
+
+
+
+       procedure driver.DrawSpices;   {вырисовываем спицы}
+       var i : spices;
+       begin
+       clrscr;
+             for i := First to Aux do
+                spica [i].draw
+       end;
+
+       procedure driver.AddandDrawBlocks;  {добавить и нарисовать блоки}
+
+
+       var BlockSize : byte;  {длина блока}
+           BlockTo : ^Block; {указатель на блок}
+           BlockX, BlockY : byte; {координаты, где рисовать блок}
+           Success : boolean;
+           BlockColor : byte;
+           Temp : byte;
+       begin
+              Blockcolor := 1;   {цвет блок = 1}
+              BlockSize := Maxofblocks * 2 + 1; {длина блока}
+              Temp := NumOfBlocks;
+
+              repeat
+
+              New (BlockTo, init (Blockcolor, blocksize));  {новый объект блок сразу же с инициализацией}
+              BlockX := spica[First].GetX - Blocksize div 2;  {определить Х координату блока}
+              BlockY := spica[First].GetFreeUp;  {определить Y координату блока}
+
+              BlockTo^.Draw (BlockX, BlockY);   {нарисовать блок}
+              spica[First].AddBlock (BlockTo^, success);  {добавить блок на первую спицу}
+
+              dec (NumOfBlocks);  {уменьшаем кол-во блоков}
+              dec (Blocksize, 2); {уменьшаем на 2 длину блока}
+
+              if (BlockColor = 3) or (Blockcolor mod 7 = 0) then    {если цвет блока = 3, то пропускаем}
+              inc (blockcolor, 2)
+              else inc (blockcolor)
+
+              until NumofBlocks = 0;
+
+              NumOfBlocks := Temp;
+
+       end;
+
+      procedure driver.doit;
+        procedure do_recourse (First, Last, Aux : spices; num : byte);
+         var x : block;
+           Success : boolean;
+        begin
+
+             if num = 1 then begin
+
+               spica[first].PushBlock (x);    {забираем блок с первой спицы}
+
+             x.Move (spica[Last].GetX, spica[First].GetLengthToFree,
+                      spica[Last].GetLengthToFree, 4);    {перекладываем}
+
+              spica[Last].Addblock (x, Success);  {ложим блок на последнюю спицы}
+
+            end else begin
+                 do_recourse (First, Aux, Last, num - 1); {рекурсия}
+
+                  spica[first].PushBlock (x);  {забираем последний блок с первой спицы}
+                  x.Move (spica[Last].GetX, spica[First].GetLengthToFree,
+                      spica[Last].GetLengthToFree, 4); {перекладываем}
+
+                       spica[Last].Addblock (x, Success);{ложим блок на последнюю спицы}
+
+                 do_recourse (Aux, Last, First, num - 1) {рекурсия}
+              end;
+
+
+        end;
+
+
+       begin
+               do_recourse (a, b, c, NumOfBlocks);
+
+
+
+       end;
+
+end.
