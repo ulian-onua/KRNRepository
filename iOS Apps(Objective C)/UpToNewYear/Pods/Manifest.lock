@@ -1,0 +1,21 @@
+PODS:
+  - Fabric (1.6.3)
+  - TwitterCore (1.15.1):
+    - Fabric
+  - TwitterKit (1.15.1):
+    - TwitterCore (= 1.15.1)
+  - VK-ios-sdk (1.3.11)
+
+DEPENDENCIES:
+  - Fabric
+  - TwitterCore
+  - TwitterKit
+  - VK-ios-sdk
+
+SPEC CHECKSUMS:
+  Fabric: cbe0ca6c9531bba17910052f6f105fcbc5fa7f67
+  TwitterCore: 12983a7464e34afbbf18881347898a9db526ac71
+  TwitterKit: b5821570887ec2d77650fa232eaec175665dc443
+  VK-ios-sdk: 4b05b2e0bc7d11c27d423a808c278cb62532a458
+
+COCOAPODS: 0.39.0
