@@ -1,0 +1,610 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 47;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4A1B9ED31CF9987900D8FB16 /* KRNAbstractViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B9ED21CF9987900D8FB16 /* KRNAbstractViewController.m */; };
+		4A1D37001CF84DB200F2C64D /* KRNShowTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1D36FF1CF84DB200F2C64D /* KRNShowTextVC.m */; };
+		4A42DB231CFA28A900844DFB /* ODSSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A42DB221CFA28A900844DFB /* ODSSearchController.m */; };
+		4A4339FE1CFDBF3700286775 /* KRNQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4339FD1CFDBF3700286775 /* KRNQueue.m */; };
+		4A7227F91CF71063003E0832 /* KRNAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7227F81CF71063003E0832 /* KRNAppSettings.m */; };
+		4A73144F1CF5B59100B8B7E2 /* KRNShowImageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A73144E1CF5B59100B8B7E2 /* KRNShowImageVC.m */; };
+		4A7314521CF5C05200B8B7E2 /* KRNDownloadTaskManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7314511CF5C05200B8B7E2 /* KRNDownloadTaskManagerTests.m */; };
+		4A86464D1CF4A51000130D5A /* KRNDownloadsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A86464C1CF4A51000130D5A /* KRNDownloadsTVC.m */; };
+		4A8646501CF4A72B00130D5A /* KRNSettingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A86464F1CF4A72B00130D5A /* KRNSettingsVC.m */; };
+		4A8646591CF4C09F00130D5A /* KRNDownloadTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8646581CF4C09F00130D5A /* KRNDownloadTableViewCell.m */; };
+		4A86465C1CF4C95500130D5A /* KRNDownloadTasksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A86465B1CF4C95500130D5A /* KRNDownloadTasksManager.m */; };
+		4A9FB5321B7233CB0079A3AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9FB5311B7233CB0079A3AC /* main.m */; };
+		4A9FB5351B7233CB0079A3AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9FB5341B7233CB0079A3AC /* AppDelegate.m */; };
+		4A9FB5381B7233CB0079A3AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9FB5371B7233CB0079A3AC /* ViewController.m */; };
+		4A9FB53B1B7233CB0079A3AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A9FB5391B7233CB0079A3AC /* Main.storyboard */; };
+		4A9FB5401B7233CB0079A3AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A9FB53F1B7233CB0079A3AC /* Assets.xcassets */; };
+		4A9FB5431B7233CB0079A3AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A9FB5411B7233CB0079A3AC /* LaunchScreen.storyboard */; };
+		4A9FB54E1B7233CB0079A3AC /* BrowserDrapayloTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A9FB54D1B7233CB0079A3AC /* BrowserDrapayloTests.m */; };
+		4AE481881CFC9F0E00A9D1FB /* KRNSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE481871CFC9F0E00A9D1FB /* KRNSessionManager.m */; };
+		8404E3F21CF8A80600BEBE24 /* KRNWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8404E3F11CF8A80600BEBE24 /* KRNWebViewController.m */; };
+		84996EA41CEF782900928968 /* KRNDownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 84996EA31CEF782900928968 /* KRNDownloadTask.m */; };
+		84996EA71CEF7F4500928968 /* KRNUrlStringMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 84996EA61CEF7F4500928968 /* KRNUrlStringMethods.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4A9FB54A1B7233CB0079A3AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A9FB5251B7233CB0079A3AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4A9FB52C1B7233CB0079A3AC;
+			remoteInfo = BrowserDrapaylo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4A1B9ED11CF9987900D8FB16 /* KRNAbstractViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNAbstractViewController.h; sourceTree = "<group>"; };
+		4A1B9ED21CF9987900D8FB16 /* KRNAbstractViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNAbstractViewController.m; sourceTree = "<group>"; };
+		4A1D36FE1CF84DB200F2C64D /* KRNShowTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNShowTextVC.h; sourceTree = "<group>"; };
+		4A1D36FF1CF84DB200F2C64D /* KRNShowTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNShowTextVC.m; sourceTree = "<group>"; };
+		4A42DB211CFA28A900844DFB /* ODSSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODSSearchController.h; sourceTree = "<group>"; };
+		4A42DB221CFA28A900844DFB /* ODSSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODSSearchController.m; sourceTree = "<group>"; };
+		4A4339FC1CFDBF3700286775 /* KRNQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNQueue.h; sourceTree = "<group>"; };
+		4A4339FD1CFDBF3700286775 /* KRNQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNQueue.m; sourceTree = "<group>"; };
+		4A7227F71CF71063003E0832 /* KRNAppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNAppSettings.h; sourceTree = "<group>"; };
+		4A7227F81CF71063003E0832 /* KRNAppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNAppSettings.m; sourceTree = "<group>"; };
+		4A73144D1CF5B59100B8B7E2 /* KRNShowImageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNShowImageVC.h; sourceTree = "<group>"; };
+		4A73144E1CF5B59100B8B7E2 /* KRNShowImageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNShowImageVC.m; sourceTree = "<group>"; };
+		4A7314511CF5C05200B8B7E2 /* KRNDownloadTaskManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNDownloadTaskManagerTests.m; sourceTree = "<group>"; };
+		4A86464B1CF4A51000130D5A /* KRNDownloadsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNDownloadsTVC.h; sourceTree = "<group>"; };
+		4A86464C1CF4A51000130D5A /* KRNDownloadsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNDownloadsTVC.m; sourceTree = "<group>"; };
+		4A86464E1CF4A72B00130D5A /* KRNSettingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNSettingsVC.h; sourceTree = "<group>"; };
+		4A86464F1CF4A72B00130D5A /* KRNSettingsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNSettingsVC.m; sourceTree = "<group>"; };
+		4A8646571CF4C09F00130D5A /* KRNDownloadTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNDownloadTableViewCell.h; sourceTree = "<group>"; };
+		4A8646581CF4C09F00130D5A /* KRNDownloadTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNDownloadTableViewCell.m; sourceTree = "<group>"; };
+		4A86465A1CF4C95500130D5A /* KRNDownloadTasksManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNDownloadTasksManager.h; sourceTree = "<group>"; };
+		4A86465B1CF4C95500130D5A /* KRNDownloadTasksManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNDownloadTasksManager.m; sourceTree = "<group>"; };
+		4A9FB52D1B7233CB0079A3AC /* BrowserDrapaylo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrowserDrapaylo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A9FB5311B7233CB0079A3AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4A9FB5331B7233CB0079A3AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4A9FB5341B7233CB0079A3AC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4A9FB5361B7233CB0079A3AC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		4A9FB5371B7233CB0079A3AC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		4A9FB53A1B7233CB0079A3AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4A9FB53F1B7233CB0079A3AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A9FB5421B7233CB0079A3AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4A9FB5441B7233CB0079A3AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A9FB5491B7233CB0079A3AC /* BrowserDrapayloTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrowserDrapayloTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A9FB54D1B7233CB0079A3AC /* BrowserDrapayloTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrowserDrapayloTests.m; sourceTree = "<group>"; };
+		4A9FB54F1B7233CB0079A3AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4AE481861CFC9F0E00A9D1FB /* KRNSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNSessionManager.h; sourceTree = "<group>"; };
+		4AE481871CFC9F0E00A9D1FB /* KRNSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNSessionManager.m; sourceTree = "<group>"; };
+		8404E3F01CF8A80600BEBE24 /* KRNWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNWebViewController.h; sourceTree = "<group>"; };
+		8404E3F11CF8A80600BEBE24 /* KRNWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNWebViewController.m; sourceTree = "<group>"; };
+		84996EA21CEF782900928968 /* KRNDownloadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNDownloadTask.h; sourceTree = "<group>"; };
+		84996EA31CEF782900928968 /* KRNDownloadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNDownloadTask.m; sourceTree = "<group>"; };
+		84996EA51CEF7F4500928968 /* KRNUrlStringMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRNUrlStringMethods.h; sourceTree = "<group>"; };
+		84996EA61CEF7F4500928968 /* KRNUrlStringMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRNUrlStringMethods.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4A9FB52A1B7233CB0079A3AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A9FB5461B7233CB0079A3AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4A1B9ECC1CF9979E00D8FB16 /* KRNAppSettings */ = {
+			isa = PBXGroup;
+			children = (
+				4A7227F71CF71063003E0832 /* KRNAppSettings.h */,
+				4A7227F81CF71063003E0832 /* KRNAppSettings.m */,
+			);
+			name = KRNAppSettings;
+			sourceTree = "<group>";
+		};
+		4A1B9ECD1CF997B200D8FB16 /* KRNWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8404E3F01CF8A80600BEBE24 /* KRNWebViewController.h */,
+				8404E3F11CF8A80600BEBE24 /* KRNWebViewController.m */,
+			);
+			name = KRNWebViewController;
+			sourceTree = "<group>";
+		};
+		4A1B9ECE1CF997B900D8FB16 /* KRNShowTextVC */ = {
+			isa = PBXGroup;
+			children = (
+				4A1D36FE1CF84DB200F2C64D /* KRNShowTextVC.h */,
+				4A1D36FF1CF84DB200F2C64D /* KRNShowTextVC.m */,
+			);
+			name = KRNShowTextVC;
+			sourceTree = "<group>";
+		};
+		4A1B9ECF1CF997C400D8FB16 /* Detail VC */ = {
+			isa = PBXGroup;
+			children = (
+				4A1B9ECD1CF997B200D8FB16 /* KRNWebViewController */,
+				4A1B9ECE1CF997B900D8FB16 /* KRNShowTextVC */,
+				4A7314501CF5B59B00B8B7E2 /* KRNShowImageVC */,
+			);
+			name = "Detail VC";
+			sourceTree = "<group>";
+		};
+		4A1B9ED01CF997E900D8FB16 /* Tab Bar Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4A8646511CF4A9E100130D5A /* KRNBrowserBV */,
+				4A8646521CF4A9EB00130D5A /* KRNDownloadsTVC */,
+				4A8646531CF4A9F400130D5A /* KRNSettingsTVC */,
+			);
+			name = "Tab Bar Controllers";
+			sourceTree = "<group>";
+		};
+		4A73144B1CF59F1D00B8B7E2 /* KRNDownloadTVC Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4A8646571CF4C09F00130D5A /* KRNDownloadTableViewCell.h */,
+				4A8646581CF4C09F00130D5A /* KRNDownloadTableViewCell.m */,
+			);
+			name = "KRNDownloadTVC Cell";
+			sourceTree = "<group>";
+		};
+		4A73144C1CF5A31F00B8B7E2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A4339FC1CFDBF3700286775 /* KRNQueue.h */,
+				4A4339FD1CFDBF3700286775 /* KRNQueue.m */,
+				4AE481861CFC9F0E00A9D1FB /* KRNSessionManager.h */,
+				4AE481871CFC9F0E00A9D1FB /* KRNSessionManager.m */,
+				84996EA21CEF782900928968 /* KRNDownloadTask.h */,
+				84996EA31CEF782900928968 /* KRNDownloadTask.m */,
+				4A86465A1CF4C95500130D5A /* KRNDownloadTasksManager.h */,
+				4A86465B1CF4C95500130D5A /* KRNDownloadTasksManager.m */,
+				84996EA51CEF7F4500928968 /* KRNUrlStringMethods.h */,
+				84996EA61CEF7F4500928968 /* KRNUrlStringMethods.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4A7314501CF5B59B00B8B7E2 /* KRNShowImageVC */ = {
+			isa = PBXGroup;
+			children = (
+				4A73144D1CF5B59100B8B7E2 /* KRNShowImageVC.h */,
+				4A73144E1CF5B59100B8B7E2 /* KRNShowImageVC.m */,
+			);
+			name = KRNShowImageVC;
+			sourceTree = "<group>";
+		};
+		4A8646511CF4A9E100130D5A /* KRNBrowserBV */ = {
+			isa = PBXGroup;
+			children = (
+				4A9FB5361B7233CB0079A3AC /* ViewController.h */,
+				4A9FB5371B7233CB0079A3AC /* ViewController.m */,
+			);
+			name = KRNBrowserBV;
+			sourceTree = "<group>";
+		};
+		4A8646521CF4A9EB00130D5A /* KRNDownloadsTVC */ = {
+			isa = PBXGroup;
+			children = (
+				4A86464B1CF4A51000130D5A /* KRNDownloadsTVC.h */,
+				4A86464C1CF4A51000130D5A /* KRNDownloadsTVC.m */,
+				4A73144B1CF59F1D00B8B7E2 /* KRNDownloadTVC Cell */,
+			);
+			name = KRNDownloadsTVC;
+			sourceTree = "<group>";
+		};
+		4A8646531CF4A9F400130D5A /* KRNSettingsTVC */ = {
+			isa = PBXGroup;
+			children = (
+				4A86464E1CF4A72B00130D5A /* KRNSettingsVC.h */,
+				4A86464F1CF4A72B00130D5A /* KRNSettingsVC.m */,
+			);
+			name = KRNSettingsTVC;
+			sourceTree = "<group>";
+		};
+		4A9FB5241B7233CB0079A3AC = {
+			isa = PBXGroup;
+			children = (
+				4A9FB52F1B7233CB0079A3AC /* BrowserDrapaylo */,
+				4A9FB54C1B7233CB0079A3AC /* BrowserDrapayloTests */,
+				4A9FB52E1B7233CB0079A3AC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4A9FB52E1B7233CB0079A3AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4A9FB52D1B7233CB0079A3AC /* BrowserDrapaylo.app */,
+				4A9FB5491B7233CB0079A3AC /* BrowserDrapayloTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A9FB52F1B7233CB0079A3AC /* BrowserDrapaylo */ = {
+			isa = PBXGroup;
+			children = (
+				4A9FB5331B7233CB0079A3AC /* AppDelegate.h */,
+				4A9FB5341B7233CB0079A3AC /* AppDelegate.m */,
+				4A9FB5391B7233CB0079A3AC /* Main.storyboard */,
+				4A42DB211CFA28A900844DFB /* ODSSearchController.h */,
+				4A42DB221CFA28A900844DFB /* ODSSearchController.m */,
+				4A1B9ED11CF9987900D8FB16 /* KRNAbstractViewController.h */,
+				4A1B9ED21CF9987900D8FB16 /* KRNAbstractViewController.m */,
+				4A1B9ECC1CF9979E00D8FB16 /* KRNAppSettings */,
+				4A1B9ECF1CF997C400D8FB16 /* Detail VC */,
+				4A1B9ED01CF997E900D8FB16 /* Tab Bar Controllers */,
+				4A73144C1CF5A31F00B8B7E2 /* Model */,
+				4A9FB53F1B7233CB0079A3AC /* Assets.xcassets */,
+				4A9FB5411B7233CB0079A3AC /* LaunchScreen.storyboard */,
+				4A9FB5441B7233CB0079A3AC /* Info.plist */,
+				4A9FB5301B7233CB0079A3AC /* Supporting Files */,
+			);
+			path = BrowserDrapaylo;
+			sourceTree = "<group>";
+		};
+		4A9FB5301B7233CB0079A3AC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4A9FB5311B7233CB0079A3AC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4A9FB54C1B7233CB0079A3AC /* BrowserDrapayloTests */ = {
+			isa = PBXGroup;
+			children = (
+				4A9FB54D1B7233CB0079A3AC /* BrowserDrapayloTests.m */,
+				4A7314511CF5C05200B8B7E2 /* KRNDownloadTaskManagerTests.m */,
+				4A9FB54F1B7233CB0079A3AC /* Info.plist */,
+			);
+			path = BrowserDrapayloTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4A9FB52C1B7233CB0079A3AC /* BrowserDrapaylo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A9FB5521B7233CB0079A3AC /* Build configuration list for PBXNativeTarget "BrowserDrapaylo" */;
+			buildPhases = (
+				4A9FB5291B7233CB0079A3AC /* Sources */,
+				4A9FB52A1B7233CB0079A3AC /* Frameworks */,
+				4A9FB52B1B7233CB0079A3AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BrowserDrapaylo;
+			productName = BrowserDrapaylo;
+			productReference = 4A9FB52D1B7233CB0079A3AC /* BrowserDrapaylo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4A9FB5481B7233CB0079A3AC /* BrowserDrapayloTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A9FB5551B7233CB0079A3AC /* Build configuration list for PBXNativeTarget "BrowserDrapayloTests" */;
+			buildPhases = (
+				4A9FB5451B7233CB0079A3AC /* Sources */,
+				4A9FB5461B7233CB0079A3AC /* Frameworks */,
+				4A9FB5471B7233CB0079A3AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4A9FB54B1B7233CB0079A3AC /* PBXTargetDependency */,
+			);
+			name = BrowserDrapayloTests;
+			productName = BrowserDrapayloTests;
+			productReference = 4A9FB5491B7233CB0079A3AC /* BrowserDrapayloTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4A9FB5251B7233CB0079A3AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Drapaylo Yulian";
+				TargetAttributes = {
+					4A9FB52C1B7233CB0079A3AC = {
+						CreatedOnToolsVersion = 7.0;
+						DevelopmentTeam = E8TPSF9L49;
+					};
+					4A9FB5481B7233CB0079A3AC = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = 4A9FB52C1B7233CB0079A3AC;
+					};
+				};
+			};
+			buildConfigurationList = 4A9FB5281B7233CB0079A3AC /* Build configuration list for PBXProject "BrowserDrapaylo" */;
+			compatibilityVersion = "Xcode 6.3";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4A9FB5241B7233CB0079A3AC;
+			productRefGroup = 4A9FB52E1B7233CB0079A3AC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4A9FB52C1B7233CB0079A3AC /* BrowserDrapaylo */,
+				4A9FB5481B7233CB0079A3AC /* BrowserDrapayloTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4A9FB52B1B7233CB0079A3AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A9FB5431B7233CB0079A3AC /* LaunchScreen.storyboard in Resources */,
+				4A9FB5401B7233CB0079A3AC /* Assets.xcassets in Resources */,
+				4A9FB53B1B7233CB0079A3AC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A9FB5471B7233CB0079A3AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4A9FB5291B7233CB0079A3AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A42DB231CFA28A900844DFB /* ODSSearchController.m in Sources */,
+				4A1D37001CF84DB200F2C64D /* KRNShowTextVC.m in Sources */,
+				4A8646501CF4A72B00130D5A /* KRNSettingsVC.m in Sources */,
+				4A9FB5381B7233CB0079A3AC /* ViewController.m in Sources */,
+				4A1B9ED31CF9987900D8FB16 /* KRNAbstractViewController.m in Sources */,
+				4A9FB5351B7233CB0079A3AC /* AppDelegate.m in Sources */,
+				4A86465C1CF4C95500130D5A /* KRNDownloadTasksManager.m in Sources */,
+				4A9FB5321B7233CB0079A3AC /* main.m in Sources */,
+				4AE481881CFC9F0E00A9D1FB /* KRNSessionManager.m in Sources */,
+				4A8646591CF4C09F00130D5A /* KRNDownloadTableViewCell.m in Sources */,
+				4A4339FE1CFDBF3700286775 /* KRNQueue.m in Sources */,
+				8404E3F21CF8A80600BEBE24 /* KRNWebViewController.m in Sources */,
+				4A73144F1CF5B59100B8B7E2 /* KRNShowImageVC.m in Sources */,
+				4A7227F91CF71063003E0832 /* KRNAppSettings.m in Sources */,
+				84996EA41CEF782900928968 /* KRNDownloadTask.m in Sources */,
+				84996EA71CEF7F4500928968 /* KRNUrlStringMethods.m in Sources */,
+				4A86464D1CF4A51000130D5A /* KRNDownloadsTVC.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A9FB5451B7233CB0079A3AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A7314521CF5C05200B8B7E2 /* KRNDownloadTaskManagerTests.m in Sources */,
+				4A9FB54E1B7233CB0079A3AC /* BrowserDrapayloTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4A9FB54B1B7233CB0079A3AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4A9FB52C1B7233CB0079A3AC /* BrowserDrapaylo */;
+			targetProxy = 4A9FB54A1B7233CB0079A3AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4A9FB5391B7233CB0079A3AC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A9FB53A1B7233CB0079A3AC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4A9FB5411B7233CB0079A3AC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4A9FB5421B7233CB0079A3AC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4A9FB5501B7233CB0079A3AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4A9FB5511B7233CB0079A3AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4A9FB5531B7233CB0079A3AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BrowserDrapaylo/FastPdfKit.embeddedframework",
+				);
+				INFOPLIST_FILE = BrowserDrapaylo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "kornet-company.BrowserDrapaylo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		4A9FB5541B7233CB0079A3AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BrowserDrapaylo/FastPdfKit.embeddedframework",
+				);
+				INFOPLIST_FILE = BrowserDrapaylo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "kornet-company.BrowserDrapaylo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		4A9FB5561B7233CB0079A3AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BrowserDrapayloTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "kornet-company.BrowserDrapayloTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrowserDrapaylo.app/BrowserDrapaylo";
+			};
+			name = Debug;
+		};
+		4A9FB5571B7233CB0079A3AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BrowserDrapayloTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "kornet-company.BrowserDrapayloTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrowserDrapaylo.app/BrowserDrapaylo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4A9FB5281B7233CB0079A3AC /* Build configuration list for PBXProject "BrowserDrapaylo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A9FB5501B7233CB0079A3AC /* Debug */,
+				4A9FB5511B7233CB0079A3AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A9FB5521B7233CB0079A3AC /* Build configuration list for PBXNativeTarget "BrowserDrapaylo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A9FB5531B7233CB0079A3AC /* Debug */,
+				4A9FB5541B7233CB0079A3AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A9FB5551B7233CB0079A3AC /* Build configuration list for PBXNativeTarget "BrowserDrapayloTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A9FB5561B7233CB0079A3AC /* Debug */,
+				4A9FB5571B7233CB0079A3AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4A9FB5251B7233CB0079A3AC /* Project object */;
+}
